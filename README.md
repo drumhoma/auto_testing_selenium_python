@@ -7,3 +7,5 @@ https://stepik.org/course/575/syllabus
 1 файл с локаторами\
 5 файл c PageObject\
 2 файл с тестовыми сценариями\
+
+pytest --browser=chrome --headless=no --lang=ru -s -v --tb=line -m debug --html=report.html --reruns 1

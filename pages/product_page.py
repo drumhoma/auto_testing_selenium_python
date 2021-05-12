@@ -6,6 +6,8 @@ class ProductPage(BasePage):
     def should_be_add_to_basket_from_product_page(self):
         self.should_be_add_to_basket_button()
         self.add_to_basket()
+
+    def should_be_correct_data_in_basket(self):
         self.should_be_name_in_basket()
         self.should_be_price_in_basket()
 

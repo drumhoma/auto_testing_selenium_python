@@ -2,16 +2,16 @@ import time
 
 import pytest
 
-from .pages.product_page import ProductPage
 from .pages.basket_page import BasketPage
 from .pages.login_page import LoginPage
+from .pages.product_page import ProductPage
 
 link_common = "http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/"
 link_promo = "http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/?promo=newYear2019"
 
 
 @pytest.mark.guest_add_basket_from_product
-class TestAddBasketFromProductPage():
+class TestAddBasketFromProductPage:
     @pytest.mark.need_review
     def test_guest_can_add_product_to_basket(self, browser):
         page = ProductPage(browser, link_promo)
@@ -43,7 +43,7 @@ class TestAddBasketFromProductPage():
 
 
 @pytest.mark.guest_can_login_from_product_page
-class TestLoginFromProductPage():
+class TestLoginFromProductPage:
     def test_guest_should_see_login_link_on_product_page(self, browser):
         page = ProductPage(browser, link_common)
         page.open()
@@ -57,7 +57,7 @@ class TestLoginFromProductPage():
 
 
 @pytest.mark.guest_cant_see_product_in_basket
-class TestEmptyBasketForGuest():
+class TestEmptyBasketForGuest:
     @pytest.mark.need_review
     def test_guest_cant_see_product_in_basket_opened_from_product_page(self, browser):
         page = ProductPage(browser, link_common)
@@ -70,11 +70,11 @@ class TestEmptyBasketForGuest():
 
 
 @pytest.mark.user_add_to_basket
-class TestUserAddToBasketFromProductPage():
+class TestUserAddToBasketFromProductPage:
     @pytest.fixture(scope="function", autouse=True)
     def setup(self, browser):
-        email = str(time.time()) + "@fakemail.io"
-        password = ("RanD0m_Pa55w0Rd!")
+        email = str(time.time()) + "@fake_mail.io"
+        password = "RanD0m_Pa55w0Rd!"
         registration = LoginPage(browser, link_common)
         registration.open()
         registration.go_to_login_page()

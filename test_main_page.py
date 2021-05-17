@@ -1,14 +1,14 @@
 import pytest
 
-from .pages.main_page import MainPage
-from .pages.login_page import LoginPage
 from .pages.basket_page import BasketPage
+from .pages.login_page import LoginPage
+from .pages.main_page import MainPage
 
 link_common = "http://selenium1py.pythonanywhere.com/en-gb/catalogue/coders-at-work_207/"
 
 
 @pytest.mark.guest_login
-class TestLoginFromMainPage():
+class TestLoginFromMainPage:
     def test_guest_should_see_login_link(self, browser):
         page = MainPage(browser, link_common)
         page.open()
@@ -23,7 +23,7 @@ class TestLoginFromMainPage():
 
 
 @pytest.mark.guest_cant_see_product_in_basket
-class TestBasketFromMainPage():
+class TestBasketFromMainPage:
     def test_guest_cant_see_product_in_basket_opened_from_main_page(self, browser):
         page = MainPage(browser, link_common)
         page.open()

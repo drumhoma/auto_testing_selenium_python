@@ -21,11 +21,9 @@ def browser(request):
     if browser_name == "chrome":
         options = ChromeOptions()
         options.add_experimental_option('prefs', {'intl.accept_languages': user_language})
-
+        options.add_argument('--start-maximized')  # запуск браузера "во весь экран"
         if headless == "yes":
             options.add_argument('--headless')  # безголовый запуск браузера
-        options.add_argument('--start-maximized')  # запуск браузера "во весь экран"
-        # options.add_argument('--window-size=1920x1080') # запуск браузера с заданным разрешением
 
         browser = webdriver.Chrome(options=options)
         # browser.maximize_window() # "во весь экран" после запуска браузера
@@ -34,10 +32,11 @@ def browser(request):
     elif browser_name == "firefox":
         options = FirefoxOptions()
         options.set_preference('intl.accept_languages', user_language)
+        options.add_argument('--start-maximized')
+        # options.add_argument('--window-size=1920x1080')
 
         if headless == "yes":
             options.add_argument('--headless')
-        options.add_argument('--start-maximized')
 
         browser = webdriver.Firefox(options=options)
         # browser.maximize_window()
@@ -46,8 +45,9 @@ def browser(request):
     elif browser_name == "yandex":
         options = ChromeOptions()
         options.add_experimental_option('prefs', {'intl.accept_languages': user_language})
-        # options.add_argument('--headless')  # в таком виде не работает с яндекс:(
         options.add_argument('--start-maximized')
+        # options.add_argument('--window-size=1920x1080')
+        # options.add_argument('--headless')  # в таком виде не работает с яндекс:(
 
         binary_yandex_driver_file = r'C:\Python\Scripts\yandexdriver.exe'
         browser = webdriver.Chrome(binary_yandex_driver_file, options=options)

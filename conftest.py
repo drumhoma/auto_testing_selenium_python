@@ -31,7 +31,6 @@ def browser(request):
         # browser.maximize_window() # "во весь экран" после запуска браузера
         # browser.set_window_size(1920, 1080) # изменение разрешения после запуска браузера
 
-
     elif browser_name == "firefox":
         options = FirefoxOptions()
         options.set_preference('intl.accept_languages', user_language)
@@ -43,7 +42,6 @@ def browser(request):
         browser = webdriver.Firefox(options=options)
         # browser.maximize_window()
         # browser.set_window_size(1920, 1080)
-
 
     elif browser_name == "yandex":
         options = ChromeOptions()
@@ -58,7 +56,6 @@ def browser(request):
         browser.switch_to.window(new_window)
         # browser.maximize_window()
         # browser.set_window_size(1920, 1080)
-
 
     else:
         raise pytest.UsageError("--browser should be chrome or firefox or yandex")
